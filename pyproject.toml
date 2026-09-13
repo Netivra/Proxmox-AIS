@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools==84.0.0", "wheel==0.48.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "proxmox-ais-server"
+version = "0.1.0"
+description = "Controlled Proxmox automated installation and resumable post-installation"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.141.1",
+    "pydantic==2.13.5",
+    "uvicorn==0.52.4",
+    "jinja2==3.1.6",
+    "python-multipart==0.0.32",
+    "cryptography==50.0.1",
+    "tomli-w==1.2.0",
+    "jsonschema==4.26.0",
+    "tzdata==2026.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1", "httpx==0.28.1"]
+
+[project.scripts]
+proxmox-ais = "provisioner.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["provisioner*"]
+
+[tool.setuptools.package-data]
+provisioner = ["templates/*.html", "static/*", "builtin_modules/*.sh", "builtin_modules/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

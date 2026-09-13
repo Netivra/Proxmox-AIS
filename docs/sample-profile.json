@@ -1,0 +1,29 @@
+{
+  "name": "lab-system-single-disk",
+  "kind": "installation",
+  "target_builds": ["9.1-1"],
+  "reason": "Beispiel zur Anpassung im isolierten Labor",
+  "values": {
+    "root_secret_id": "REPLACE_WITH_SECRET_ID",
+    "global": {
+      "keyboard": "de",
+      "country": "de",
+      "timezone": "Europe/Berlin",
+      "mailto": "admin@example.net"
+    },
+    "network": {
+      "source": "from-answer",
+      "gateway": "192.0.2.1",
+      "dns": "192.0.2.53",
+      "filter": {"ID_NET_NAME_MAC": "enx020000000001"}
+    },
+    "disk_setup": {
+      "filesystem": "ext4",
+      "filter": {"ID_SERIAL_SHORT": "LAB_SYSTEM_DISK_001"},
+      "filter_match": "all",
+      "expected_count": 1,
+      "expected_serials": ["LAB_SYSTEM_DISK_001"],
+      "inventory_evidence": "REPLACE_WITH_VERIFIED_DISK_INVENTORY_REFERENCE"
+    }
+  }
+}

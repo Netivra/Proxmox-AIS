@@ -1,0 +1,29 @@
+services:
+  provisioner:
+    image: ${PROVISIONER_IMAGE:?PROVISIONER_IMAGE in .env auf das Image aus der GitHub Container Registry setzen}
+    restart: unless-stopped
+    init: true
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      DATA_DIR: /var/lib/proxmox-ais
+      MASTER_KEY_FILE: /run/secrets/master.key
+      PUBLIC_URL: ${PUBLIC_URL:-https://provision.example.net}
+      SECURE_COOKIES: "true"
+      MAINTENANCE: ${MAINTENANCE:-false}
+    volumes:
+      - ais-data:/var/lib/proxmox-ais
+      - ais-keys:/run/secrets:ro
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  ais-data:
+    name: proxmox-ais-data
+  ais-keys:
+    name: proxmox-ais-keys

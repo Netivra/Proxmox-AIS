@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Proxmox AIS · Provisionierung</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Hauptnavigation">
+      <a class="brand" href="#/dashboard"><span class="brand-mark">a<span>i</span>s</span><span>PROXMOX<span class="brand-sub">PROVISIONING CONSOLE</span></span></a>
+      <div class="workspace-label"><span class="workspace-dot"></span> Infrastruktur <span class="workspace-version">v1</span></div>
+      <nav class="nav-list">
+        <span class="nav-caption">VERWALTUNG</span>
+        <a href="#/dashboard" data-nav="dashboard" data-icon="dashboard">Übersicht</a>
+        <a href="#/hosts" data-nav="hosts" data-icon="server">Serverinventar</a>
+        <a href="#/runs" data-nav="runs" data-icon="activity">Installationsläufe</a>
+        <span class="nav-caption">KONFIGURATION</span>
+        <a href="#/installation" data-nav="installation" data-icon="layers">Installationsprofile</a>
+        <a href="#/postinstall" data-nav="postinstall" data-icon="workflow">Postinstallation</a>
+        <a href="#/modules" data-nav="modules" data-icon="code">Skriptmodule</a>
+        <a href="#/media" data-nav="media" data-icon="disc">Installationsmedien</a>
+        <span class="nav-caption">SYSTEM</span>
+        <a href="#/audit" data-nav="audit" data-icon="shield">Auditprotokoll</a>
+        <a href="#/settings" data-nav="settings" data-icon="settings">Einstellungen</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="sidebar-status"><span class="status-dot"></span> Zentrale Provisionierung</div><p>Automatisch installieren.<br>Kontrolliert konfigurieren.</p><a href="/openapi.json" target="_blank" rel="noopener">OpenAPI-Spezifikation <span aria-hidden="true">↗</span></a></div>
+    </aside>
+    <div class="main-shell">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" type="button" data-action="menu" aria-label="Navigation öffnen" aria-controls="sidebar" aria-expanded="false">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb">Übersicht</strong></div>
+        <div class="topbar-right"><span class="connection" id="connection"><span class="status-dot"></span> Verbinden …</span><span class="topbar-divider"></span><div class="avatar" id="avatar">–</div><div class="user-info"><strong id="username">{{ user.username }}</strong><span id="user-role"></span></div><button class="icon-button" type="button" data-action="logout" aria-label="Abmelden" title="Abmelden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 4H4v16h5M14 8l4 4-4 4M8 12h10"/></svg></button></div>
+      </header>
+      <main id="main" tabindex="-1"><div class="loading-screen"><span class="spinner"></span> Konsole wird geladen …</div></main>
+      <footer class="main-footer"><span>Proxmox AIS <span class="muted">/</span> Automated Installation Service</span><span>Versionierte Konfiguration. Nachvollziehbare Ausführung.</span>{% include "affiliation_notice.html" %}</footer>
+    </div>
+  </div>
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-header"><div><span class="eyebrow" id="modal-eyebrow">PROXMOX AIS</span><h2 id="modal-title"></h2></div><button class="icon-button" type="button" data-action="close-modal" aria-label="Dialog schließen">×</button></div><div id="modal-body"></div></dialog>
+  <div id="toast-region" class="toast-region" role="status" aria-live="polite"></div>
+</body>
+</html>

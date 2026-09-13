@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Anmelden · Proxmox AIS</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="login-page">
+  <main class="login-layout">
+    <section class="login-story"><a class="brand" href="/"><span class="brand-mark">a<span>i</span>s</span><span>PROXMOX<span class="brand-sub">PROVISIONING CONSOLE</span></span></a><div class="login-intro"><span class="eyebrow">AUTOMATED INSTALLATION SERVICE</span><h1>Infrastruktur.<br>Mit System.</h1><p>Von der ersten Installation bis zur geprüften Konfiguration. Ihre Proxmox-Server, zentral verwaltet.</p><div class="login-flow"><span>01 <strong>Vorbereiten</strong></span><span>02 <strong>Freigeben</strong></span><span>03 <strong>Provisionieren</strong></span></div></div><div class="login-footnote"><span class="status-dot"></span> Kontrollierte Abläufe · Fixierte Versionen · Klare Zustände</div></section>
+    <section class="login-form-panel"><form class="login-form" method="post" action="/auth/login"><div class="login-emblem">→</div><span class="eyebrow">WILLKOMMEN ZURÜCK</span><h2>An der Konsole anmelden</h2><p class="muted">Verwenden Sie Ihr lokales Benutzerkonto.</p>{% if error %}<div class="alert alert-danger" role="alert">{{ error }}</div>{% endif %}<label>Benutzername<input name="username" autocomplete="username" required autofocus placeholder="Benutzername"></label><label>Passwort<input name="password" type="password" autocomplete="current-password" required placeholder="Ihr Passwort"></label><button class="button primary login-submit" type="submit">Anmelden <span aria-hidden="true">→</span></button><p class="login-help">Konten und Zugriffsrechte werden durch Ihren Administrator verwaltet.</p></form>{% include "affiliation_notice.html" %}<div class="login-copyright">Proxmox AIS <span>Automated Installation Service</span></div></section>
+  </main>
+</body>
+</html>

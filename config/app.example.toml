@@ -1,0 +1,8 @@
+# Optional configuration: set APP_CONFIG to this file's absolute path.
+# Environment variables override these values.
+data_dir = "./data"
+master_key_file = "./secrets/master.key"
+public_url = "https://provision.example.net"
+secure_cookies = true
+# Supply the initial administrator interactively with `proxmox-ais init`.
+# Keep the encryption key outside data_dir and back it up separately.
